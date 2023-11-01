@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="72df698c61984f2fa5f74777acb20eae" Name="Diagram1">
+        <EntityTypeShape EntityType="praktikaModel.Заказ" Width="1.5" PointX="2.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="praktikaModel.Заказанные_изделия" Width="1.5" PointX="5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="praktikaModel.Изделия" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="praktikaModel.Пользователь" Width="1.5" PointX="10" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="praktikaModel.Рисунки" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="praktikaModel.Роли" Width="1.5" PointX="7.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="praktikaModel.Составы" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="praktikaModel.Типы" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="praktikaModel.Ткани" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="praktikaModel.Фурнитура" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="praktikaModel.Цвета" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="praktikaModel.FK__Заказанны__Номер__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="praktikaModel.FK__Заказанны__Артик__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="praktikaModel.FK__Пользоват__id_ro__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="praktikaModel.Ткани_Рисунки" ManuallyRouted="false" />
+        <AssociationConnector Association="praktikaModel.Ткани_Составы" ManuallyRouted="false" />
+        <AssociationConnector Association="praktikaModel.Ткани_Цвета" ManuallyRouted="false" />
+        <AssociationConnector Association="praktikaModel.Фурнитура_Типы" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
