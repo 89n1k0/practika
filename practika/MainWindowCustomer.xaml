@@ -1,0 +1,59 @@
+﻿<Window x:Class="practika.MainWindowCustomer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:practika"
+        mc:Ignorable="d"
+        Title="Главное окно заказчика" Height="700" Width="600">
+    <Grid Background="#fffcd6">
+        <TabControl>
+            <TabItem Header="Оформить заказ" FontSize="18">
+                <TabItem.Content>
+                    <Grid Background="#d1eefc">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Выберите изделие:" Grid.Column="0" Grid.Row="0" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Label Content="Количество:" Grid.Column="0" Grid.Row="1" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Label Content="Итоговая сумма:" Grid.Column="0" Grid.Row="2" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Button Content="Оформить" Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Width="170" Height="40" Margin="10" FontSize="18" Background="#e0a9af" x:Name="Create_Order" Click="Create_Order_Click"/>
+                        <Button Content="Добавить заказ" Grid.Row="4" Grid.ColumnSpan="2" Width="200" Height="40" FontSize="18" Background="#e0a9af" x:Name="New_order" Click="New_order_Click"/>
+                        <ComboBox Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="40" Background="#b5d5ca" FontSize="16" x:Name="goods" SelectionChanged="goods_SelectionChanged"/>
+                        <Button Content="+" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Background="#e0a9af" Margin="10" Width="30" Height="30" x:Name="plus" Click="plus_Click"/>
+                        <Button Content="-" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#e0a9af" Margin="10" Width="30" Height="30" x:Name="minus" Click="minus_Click"/>
+                        <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="160" Height="30" Background="#b5d5ca" FontSize="16" x:Name="count"/>
+                        <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="160" Height="30" FontSize="16" Margin="10" x:Name="total_sum"/>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Просмотр заказов" FontSize="18">
+                <Grid Background="#d1eefc">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ListView Grid.Row="1" Foreground="Black" FontSize="20" Name="Orders" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="0" Grid.ColumnSpan="2" Width="500" Margin="10" Height="600" d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Номер}" Width="100">Номер</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Дата}">Дата</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Этап_выполнения}">Этап_выполнения</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Content="Выход" Width="120" Height="30" Background="#e0a9af" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="Authorization" Click="Authorization_Click"/>
+    </Grid>
+</Window>
