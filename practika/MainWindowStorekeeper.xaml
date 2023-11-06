@@ -8,12 +8,42 @@
         Title="Главное окно кладовщика" Height="700" Width="600">
     <Grid Background="#fffcd6">
         <TabControl>
+            <TabControl.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="FontSize" Value="18"/>
+                    <Setter Property="Margin" Value="50,0"/>
+                </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                    <Setter Property="VerticalAlignment" Value="Top"/>
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="Background" Value="#b5d5ca"/>
+                    <Setter Property="Width" Value="300"/>
+                    <Setter Property="Height" Value="30"/>
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="100"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                    <Setter Property="VerticalAlignment" Value="Top"/>
+                    <Setter Property="Background" Value="#e0a9af"/>
+                </Style>
+                <Style TargetType="ComboBox">
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Width" Value="300"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Background" Value="#b5d5ca"/>
+                </Style>
+            </TabControl.Resources>
             <TabItem Header="Ткани" FontSize="15">
                 <TabItem.Content>
                     <Grid Background="#d1eefc">
-                        <Label Content="Поиск" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,0" FontSize="18"/>
+                        <Label Content="Поиск" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                         <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Width="150" Height="30" Margin="10" FontSize="15" Background="#b5d5ca" x:Name="Find_fabric"/>
-                        <Button Content="Найти" Background="#e0a9af" Width="100" Height="30" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="1" Click="Find_fabric_Click"/>
+                        <Button Content="Найти" Grid.Row="1" Click="Find_fabric_Click"/>
                         <ListView Grid.Row="1" Foreground="Black" FontSize="20" x:Name="Fabric"  Width="500" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Height="500" d:ItemsSource="{d:SampleData ItemCount=5}">
                             <ListView.View>
                                 <GridView>
@@ -30,9 +60,9 @@
             </TabItem>
             <TabItem Header="Фурнитура" FontSize="15">
                 <Grid Background="#d1eefc">
-                    <Label Content="Поиск" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,0" FontSize="18"/>
+                    <Label Content="Поиск" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" Width="150" Height="30" Margin="10" FontSize="15" Background="#b5d5ca" x:Name="Find_furniture"/>
-                    <Button Content="Найти" Background="#e0a9af" Width="100" Height="30" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="1" Click="Find_furniture_Click"/>
+                    <Button Content="Найти" Grid.Row="1" Click="Find_furniture_Click"/>
                     <ListView Grid.Row="1" Foreground="Black" FontSize="20" x:Name="Furniture"  Width="500" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Height="500" d:ItemsSource="{d:SampleData ItemCount=5}">
                         <ListView.View>
                             <GridView>
@@ -52,37 +82,37 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="60"/>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="230"/>
+                        <ColumnDefinition Width="280"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Content="Списание тканей по артикулу" FontSize="15"/>
-                    <ComboBox Grid.Row="1" HorizontalAlignment="Left" Grid.ColumnSpan="2" VerticalAlignment="Center" Width="300" Height="30" Background="#b5d5ca" x:Name="fabric1"/>
-                    <Button Background="#e0a9af" Grid.Row="2" Width="120" Height="30" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10" Content="Списать" x:Name="Deduct" Click="Deduct_Click"/>
-                    <Label Grid.Row="3" Content="Поступление тканей" FontSize="15"/>
-                    <Label Content="Артикул:" Grid.Row="4" FontSize="15"/>
-                    <ComboBox Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Width="300" Height="30" Background="#b5d5ca" x:Name="fabric2"/>
-                    <Label Content="Длина:" Grid.Row="5" FontSize="15"/>
-                    <Label Content="Ширина:" Grid.Row="6" FontSize="15"/>
-                    <Label Content="Количество:" Grid.Row="7" FontSize="15"/>
-                    <Label Content="Цена:" Grid.Row="8" FontSize="15"/>
-                    <TextBox Grid.Row="5" Grid.Column="1" Width="300" Height="30" Background="#b5d5ca" HorizontalAlignment="Left" x:Name="length"/>
-                    <TextBox Grid.Row="6" Grid.Column="1" Width="300" Height="30" Background="#b5d5ca" HorizontalAlignment="Left" x:Name="width"/>
-                    <TextBox Grid.Row="7" Grid.Column="1" Width="300" Height="30" Background="#b5d5ca" HorizontalAlignment="Left" x:Name="count"/>
-                    <TextBox Grid.Row="8" Grid.Column="1" Width="300" Height="30" Background="#b5d5ca" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="price"/>
-                    <Button Background="#e0a9af" Grid.Row="8" Width="120" Height="30" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" Content="Оформить" x:Name="Entrance" Click="Entrance_Click"/>
+                    <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Списание тканей по артикулу"/>
+                    <ComboBox Grid.Row="1" Grid.ColumnSpan="2" x:Name="fabric1"/>
+                    <Button Grid.Row="2" Width="120" Grid.ColumnSpan="2" Content="Списать" x:Name="Deduct" Click="Deduct_Click"/>
+                    <Label Grid.Row="3" Content="Поступление тканей"/>
+                    <Label Content="Артикул:" Grid.Row="4"/>
+                    <ComboBox Grid.Row="4" Grid.Column="1" x:Name="fabric2"/>
+                    <Label Content="Длина:" Grid.Row="5"/>
+                    <Label Content="Ширина:" Grid.Row="6"/>
+                    <Label Content="Количество:" Grid.Row="7"/>
+                    <Label Content="Цена:" Grid.Row="8"/>
+                    <TextBox Grid.Row="5" Grid.Column="1" x:Name="length"/>
+                    <TextBox Grid.Row="6" Grid.Column="1" x:Name="width"/>
+                    <TextBox Grid.Row="7" Grid.Column="1" x:Name="count"/>
+                    <TextBox Grid.Row="8" Grid.Column="1" x:Name="price"/>
+                    <Button Grid.Row="8" Width="120" Grid.ColumnSpan="2" VerticalAlignment="Center" Content="Оформить" x:Name="Entrance" Click="Entrance_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button Content="Выход" Width="120" Height="30" Background="#e0a9af" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="Authorization" Click="Authorization_Click"/>
+        <Button Content="Выход" Background="#e0a9af" Width="120" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="Authorization" Click="Authorization_Click"/>
     </Grid>
 </Window>
