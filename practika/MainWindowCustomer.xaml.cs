@@ -92,6 +92,7 @@ namespace practika
                 db.SaveChanges();
                 MessageBox.Show("Заказ создан");
                 all_count = 0;
+                ListViewLoad();
             }
         }
 
@@ -113,6 +114,7 @@ namespace practika
                 db.SaveChanges();
                 MessageBox.Show("Заказ создан");
                 all_count = 0;
+                ListViewLoad();
 
             }
         }

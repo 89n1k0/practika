@@ -16,21 +16,28 @@ namespace practika
 
         private void Autho_Click(object sender, RoutedEventArgs e)
         {
-            using (praktikaEntities db = new praktikaEntities())
+            if (login.Text != "" && password.Password != "")
             {
-                if (db.Пользователь.Where(x => x.login == login.Text && x.password == password.Password).Any())
+                using (praktikaEntities db = new praktikaEntities())
                 {
-                    user = db.Пользователь.Where(x => x.login == login.Text && x.password == password.Password).First();
-                    if (user.id_role == 1) { MainWindowCustomer customer = new MainWindowCustomer(user); customer.Show(); this.Hide(); }
-                    else if (user.id_role == 2) { MainWindowManager manager = new MainWindowManager(user); manager.Show(); this.Hide(); }
-                    else if (user.id_role == 3) { MainWindowStorekeeper storekeeper = new MainWindowStorekeeper(user); storekeeper.Show(); this.Hide(); }
-                    else if (user.id_role == 4) { MainWindowDirectorate directorate = new MainWindowDirectorate(user); directorate.Show(); this.Hide(); }
+                    if (db.Пользователь.Where(x => x.login == login.Text && x.password == password.Password).Any())
+                    {
+                        user = db.Пользователь.Where(x => x.login == login.Text && x.password == password.Password).First();
+                        if (user.id_role == 1) { MainWindowCustomer customer = new MainWindowCustomer(user); customer.Show(); this.Hide(); }
+                        else if (user.id_role == 2) { MainWindowManager manager = new MainWindowManager(user); manager.Show(); this.Hide(); }
+                        else if (user.id_role == 3) { MainWindowStorekeeper storekeeper = new MainWindowStorekeeper(user); storekeeper.Show(); this.Hide(); }
+                        else if (user.id_role == 4) { MainWindowDirectorate directorate = new MainWindowDirectorate(user); directorate.Show(); this.Hide(); }
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Данный аккаунт отсутствует либо допущены ошибки в логине и пароле");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Данный аккаунт отсутствует либо допущены ошибки в логине и пароле");
-                }
+            }
+            else
+            {
+                MessageBox.Show("Заполните все поля");
             }
         }
 

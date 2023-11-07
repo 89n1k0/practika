@@ -63,11 +63,11 @@
                         <Label Content="Выберите изделие:" Grid.Column="0" Grid.Row="0" />
                         <Label Content="Количество:" Grid.Column="0" Grid.Row="1" />
                         <Label Content="Итоговая сумма:" Grid.Column="0" Grid.Row="2" />
-                        <Button Content="Оформить" Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Width="170" Height="40" x:Name="CreateOrder" Click="CreateOrderClick" />
-                        <Button Content="Добавить заказ" Grid.Row="4" Grid.ColumnSpan="2" x:Name="Neworder" Click="NeworderClick" />
-                        <ComboBox Grid.Column="1" Grid.Row="0" x:Name="goods" SelectionChanged="goodsSelectionChanged" />
-                        <Button Content="+" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" x:Name="plus" Click="plusClick" />
-                        <Button Content="-" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" x:Name="minus" Click="minusClick" />
+                        <Button Content="Оформить" Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Width="170" Height="40" x:Name="CreateOrder" Click="Create_Order_Click" />
+                        <Button Content="Добавить заказ" Grid.Row="4" Grid.ColumnSpan="2" x:Name="Neworder" Click="New_order_Click" />
+                        <ComboBox Grid.Column="1" Grid.Row="0" x:Name="goods" SelectionChanged="goods_SelectionChanged" />
+                        <Button Content="+" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" x:Name="plus" Click="plus_Click" />
+                        <Button Content="-" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" x:Name="minus" Click="minus_Click" />
                         <TextBox Grid.Column="1" Grid.Row="1" x:Name="count" />
                         <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" x:Name="total_sum" />
                     </Grid>
@@ -84,7 +84,7 @@
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Номер}">Номер</GridViewColumn>
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=Дата}">Дата</GridViewColumn>
-                                <GridViewColumn DisplayMemberBinding="{Binding Path=Этапвыполнения}">Этапвыполнения</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Этап_выполнения}">Этап_выполнения</GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

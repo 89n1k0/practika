@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:practika"
         mc:Ignorable="d"
-        Title="Главное окно заказчика" Height="700" Width="600">
+        Title="Главное окно менеджера" Height="700" Width="600">
     <Grid Background="#fffcd6">
         <Grid.Resources>
             <SolidColorBrush x:Key="LightBlueBrush" Color="#d1eefc" />
