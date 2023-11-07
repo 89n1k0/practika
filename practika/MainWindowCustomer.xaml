@@ -1,0 +1,96 @@
+﻿<Window x:Class="practika.MainWindowCustomer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:practika"
+        mc:Ignorable="d"
+        Title="Главное окно заказчика" Height="700" Width="600">
+    <Grid Background="#fffcd6">
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Background" Value="#e0a9af" />
+                <Setter Property="Margin" Value="10" />
+            </Style>
+            <Style TargetType="ComboBox">
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Width" Value="200" />
+                <Setter Property="Height" Value="40" />
+                <Setter Property="Background" Value="#b5d5ca" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Width" Value="160" />
+                <Setter Property="Height" Value="30" />
+                <Setter Property="Background" Value="#b5d5ca" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+            <Style TargetType="ListView">
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="Width" Value="500" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="Height" Value="600" />
+            </Style>
+        </Grid.Resources>
+        <TabControl>
+            <TabItem Header="Оформить заказ" FontSize="18">
+                <TabItem.Content>
+                    <Grid Background="#d1eefc">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="80" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Label Content="Выберите изделие:" Grid.Column="0" Grid.Row="0" />
+                        <Label Content="Количество:" Grid.Column="0" Grid.Row="1" />
+                        <Label Content="Итоговая сумма:" Grid.Column="0" Grid.Row="2" />
+                        <Button Content="Оформить" Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Width="170" Height="40" x:Name="CreateOrder" Click="CreateOrderClick" />
+                        <Button Content="Добавить заказ" Grid.Row="4" Grid.ColumnSpan="2" x:Name="Neworder" Click="NeworderClick" />
+                        <ComboBox Grid.Column="1" Grid.Row="0" x:Name="goods" SelectionChanged="goodsSelectionChanged" />
+                        <Button Content="+" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" x:Name="plus" Click="plusClick" />
+                        <Button Content="-" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" x:Name="minus" Click="minusClick" />
+                        <TextBox Grid.Column="1" Grid.Row="1" x:Name="count" />
+                        <Label Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" x:Name="total_sum" />
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Просмотр заказов" FontSize="18">
+                <Grid Background="#d1eefc">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ListView Grid.Row="1" Name="Orders" Grid.Column="0" Grid.ColumnSpan="2" d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Номер}">Номер</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Дата}">Дата</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Этапвыполнения}">Этапвыполнения</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Content="Выход" Width="120" Height="30" Margin="0" HorizontalAlignment="Right" VerticalAlignment="Top" x:Name="Authorization" Click="Authorization_Click"/>
+    </Grid>
+</Window>

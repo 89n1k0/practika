@@ -1,0 +1,130 @@
+﻿<Window x:Class="practika.MainWindowManager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:practika"
+        mc:Ignorable="d"
+        Title="Главное окно заказчика" Height="700" Width="600">
+    <Grid Background="#fffcd6">
+        <Grid.Resources>
+            <SolidColorBrush x:Key="LightBlueBrush" Color="#d1eefc" />
+            <SolidColorBrush x:Key="GreenBrush" Color="#b5d5ca" />
+            <SolidColorBrush x:Key="PinkBrush" Color="#e0a9af" />
+
+            <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+
+            <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="Width" Value="150" />
+                <Setter Property="Height" Value="30" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="Background" Value="{StaticResource GreenBrush}" />
+            </Style>
+
+            <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Width" Value="100" />
+                <Setter Property="Height" Value="30" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="Background" Value="{StaticResource PinkBrush}" />
+            </Style>
+
+            <Style TargetType="ListView">
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Width" Value="500" />
+                <Setter Property="Height" Value="500" />
+            </Style>
+
+            <Style TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Width" Value="200" />
+                <Setter Property="Height" Value="40" />
+                <Setter Property="Background" Value="{StaticResource GreenBrush}" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+        </Grid.Resources>
+        <TabControl>
+            <TabItem Header="Изделия" FontSize="18">
+                <TabItem.Content>
+                    <Grid Background="#d1eefc">
+                        <Label Content="Поиск" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,0" FontSize="18"/>
+                        <TextBox Grid.Row="1" x:Name="Find"/>
+                        <Button Content="Найти" Grid.Row="1" Click="Find_Click"/>
+                        <ListView Grid.Row="1" x:Name="Goods" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Артикул}" Width="100">Артикул</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Наименование}" Width="230">Наименование</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Ширина}">Ширина</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Длина}">Длина</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Цена}">Цена</GridViewColumn>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Количество}">Количество</GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Заказы" FontSize="18">
+                <Grid Background="#d1eefc">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="450"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListView Grid.Row="0" Name="Orders" Grid.Column="0" Grid.ColumnSpan="2" Height="400" d:ItemsSource="{d:SampleData ItemCount=5}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Номер}" Width="100">Номер</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Дата}">Дата</GridViewColumn>
+                                <GridViewColumn DisplayMemberBinding="{Binding Path=Этап_выполнения}">Этап_выполнения</GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Укажите номер заказа" Grid.Row="0"/>
+                        <Label Content="Укажите статус" Grid.Row="1"/>
+                        <Button Content="Сохранить" Grid.Row="2" Grid.ColumnSpan="2" Width="200" Height="40" FontSize="18" x:Name="Save_changes" Click="Save_changes_Click"/>
+                        <ComboBox Grid.Column="1" Grid.Row="0" x:Name="orders"/>
+                        <ComboBox Grid.Column="1" Grid.Row="1" x:Name="status">
+                            <ComboBoxItem Content="Новый"/>
+                            <ComboBoxItem Content="Ожидает"/>
+                            <ComboBoxItem Content="Обработка"/>
+                            <ComboBoxItem Content="Отклонен"/>
+                            <ComboBoxItem Content="К оплате"/>
+                            <ComboBoxItem Content="Оплачен"/>
+                            <ComboBoxItem Content="Раскрой"/>
+                            <ComboBoxItem Content="Готов"/>
+                        </ComboBox>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Content="Выход" Margin="0" x:Name="Authorization" Click="Authorization_Click"/>
+    </Grid>
+</Window>
