@@ -28,9 +28,10 @@ namespace practika
         {
             using (praktikaEntities db = new praktikaEntities())
             {
-                var categories = db.Ткани.ToList();
-
-                Fabric.ItemsSource = categories;
+                var fabric = db.Ткани.ToList();
+                var furnit = db.Фурнитура.ToList();
+                Furniture.ItemsSource = furnit;
+                Fabric.ItemsSource = fabric;
             }
         }
         private void reportFabric_Click(object sender, RoutedEventArgs e)
